@@ -10,12 +10,12 @@ ele = list(data["ELEV"])
 def color_producer(elevation):
     if elevation < 1000:
         return (
-            "green"  # if the volcano is less than 1000m, it should be marked as green
+            "green"  #if the volcano is less than 1000m, it should be marked as green
         )
     elif 1000 <= elevation < 3000:
-        return "orange"  # if the volcano is between 1000m and 3000m, it should be marked as orange
+        return "orange"  #if the volcano is between 1000m and 3000m, it should be marked as orange
     else:
-        return "red"  # if the volcano is more than 3000m, it should be marked as red
+        return "red"  #if the volcano is more than 3000m, it should be marked as red
 
 map = folium.Map(location=[38.58, -99.09], zoom_start=5, tiles="Stamen Terrain")
 
@@ -66,7 +66,7 @@ map.add_child(fgv)
 map.add_child(fgp)
 map.add_child(fgc)
 
-# Layer Control enables you to choose different features of the map
+#Layer Control enables you to choose different features of the map
 map.add_child(folium.LayerControl())
 
 map.save("WorldMap.html")
