@@ -17,7 +17,6 @@ def color_producer(elevation):
     else:
         return "red"  # if the volcano is more than 3000m, it should be marked as red
 
-
 map = folium.Map(location=[38.58, -99.09], zoom_start=5, tiles="Stamen Terrain")
 
 fgv = folium.FeatureGroup(name="Volcanoes of USA")
@@ -27,7 +26,7 @@ for lt, ln, el in zip(lat, lon, ele):
         folium.Marker(
             location=[lt, ln],
             popup=str(el) + "m",
-            icon=folium.Icon(color=color_producer(el))
+            icon=folium.Icon(color=color_producer(el)),
         )
     )
 
@@ -48,12 +47,20 @@ fgp.add_child(
 
 fgc = folium.FeatureGroup(name="Indian Metropolitan Cities")
 
-coordinates_list = [[28.6139, 77.209], [22.5726, 88.3639], [13.0827, 80.2707], [19.0760, 72.8777]]
-cities_list = ["New Delhi","Kolkata", "Chennai", "Mumbai"]
+coordinates_list = [
+    [28.6139, 77.209],
+    [22.5726, 88.3639],
+    [13.0827, 80.2707],
+    [19.0760, 72.8777],
+]
+cities_list = ["New Delhi", "Kolkata", "Chennai", "Mumbai"]
 
 for coordinates, cities in zip(coordinates_list, cities_list):
-    fgc.add_child(folium.Marker(location=coordinates, popup=cities, icon=folium.Icon(color='green')))
-
+    fgc.add_child(
+        folium.Marker(
+            location=coordinates, popup=cities, icon=folium.Icon(color="green")
+        )
+    )
 
 map.add_child(fgv)
 map.add_child(fgp)
